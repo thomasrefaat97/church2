@@ -539,12 +539,12 @@ section.place {
         color: #242426;
         font-size: 18px;
         position: relative;
-        bottom: 45px;
+        bottom: 62px;
     }
     
     .library div span {
         position: relative;
-        bottom: 39px;
+        bottom: 52px;
         right: 65px;
         color: #2638c3;
         font-weight: 600;
@@ -552,10 +552,7 @@ section.place {
     
 
 
-    .stories div{
-        width: 330px;
-      
-    }
+  
     
 }
 
@@ -746,4 +743,5 @@ footer div.hover  {
   .fade-in.show {
     opacity: 1;
     transform: translateY(0);
+
   }
