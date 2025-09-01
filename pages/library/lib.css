@@ -513,12 +513,12 @@ section.library {
         color: #242426;
         font-size: 18px;
         position: relative;
-        bottom: 78px;
+        bottom: 84px;
     }
     
     .library div span {
         position: relative;
-        bottom: 85px;
+        bottom: 100px;
         right: 65px;
         color: #2638c3;
         font-weight: 600;
@@ -530,11 +530,8 @@ section.library {
         height: 158px;
         margin-bottom: 25px;
     }
-
-.youtube div{
-margin-bottom : 15px;
-}
     
     
 
 }
+
