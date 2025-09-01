@@ -518,7 +518,7 @@ section.library {
     
     .library div span {
         position: relative;
-        bottom: 100px;
+        bottom: 108px;
         right: 65px;
         color: #2638c3;
         font-weight: 600;
@@ -534,4 +534,5 @@ section.library {
     
 
 }
+
 
