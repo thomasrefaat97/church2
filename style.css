@@ -544,7 +544,7 @@ section.place {
     
     .library div span {
         position: relative;
-        bottom: 70px;
+        bottom: 75px;
         right: 65px;
         color: #2638c3;
         font-weight: 600;
@@ -745,4 +745,5 @@ footer div.hover  {
     transform: translateY(0);
 
   }
+
 
