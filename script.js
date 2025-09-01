@@ -47,7 +47,7 @@ document.getElementById("verse").textContent = randomVerse;
 
 
 function copyLink(btn) {
-  const link = "https://thomasrefaat97.github.io/church/";
+  const link = "https://thomasrefaat97.github.io/church2/";
 
   navigator.clipboard.writeText(link).then(() => {
     const icon = btn.querySelector("i");
@@ -120,4 +120,5 @@ function addVerse() {
     input.value = "";
   }
 }
+
 
