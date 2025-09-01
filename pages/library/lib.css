@@ -323,6 +323,7 @@ section.library {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap : 40px;
 }
 
 
@@ -334,7 +335,6 @@ section.library {
     border-radius: 6px;
     margin: auto;
     margin: 30px;
-    margin-bottom : 100px;
 }
 
 .youtube div h1 {
@@ -535,6 +535,7 @@ section.library {
     
 
 }
+
 
 
 
