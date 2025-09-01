@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   مواعيد القداسات والخدامات</title>
+    <style>
+
+
+a.back{
+    background-color: #d4af37;
+    color: black;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 8px 80px;
+    text-decoration: none;
+    margin: 50px;
+  }
+
+
+  .back:hover{
+    background-color: #af7f11;
+  }
+
+
+
+        :root {
+            /* ألوان الهيدر (أسود وذهبي كما طلبت) */
+            --bg: #0b0b0b;
+            /* خلفية الهيدر */
+            --accent: #d4af37;
+            /* الذهبي */
+            --text: #ffffff;
+            /* نص أبيض */
+            --text-dim: #d6d6d6;
+            /* نص باهت */
+            --hover: rgba(212, 175, 55, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Kufi Arabic", "Cairo", Arial, sans-serif;
+            background: #f7f7f7;
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg);
+            color: var(--text);
+            border-bottom: 1px solid gold;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 64px;
+            gap: 12px;
+        }
+
+        /* Logo */
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .brand .mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #b9902e);
+            display: grid;
+            place-items: center;
+            color: var(--bg);
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, .35);
+        }
+
+        /* Nav */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 6px;
+        }
+
+        nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: .2px;
+            transition: background .2s ease, color .2s ease, transform .08s ease;
+            outline: none;
+        }
+
+        nav a:hover {
+            background: var(--hover);
+            color: var(--text);
+        }
+
+        nav a:active {
+            transform: translateY(1px);
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Current page */
+        .active {
+            color: var(--bg);
+            background: var(--accent);
+        }
+
+        .active:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Mobile toggle (checkbox hack) */
+        #nav-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .burger:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .burger .line {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            border-radius: 1px;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        /* Layout behavior */
+        @media (max-width: 820px) {
+            .container {
+                min-height: 60px;
+            }
+
+            .burger {
+                display: inline-block;
+            }
+
+            nav {
+                position: absolute;
+                inset-inline: 0;
+                top: 100%;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-6px);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity .2s ease, transform .2s ease;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 2px;
+                padding: 10px;
+            }
+
+            nav a {
+                padding: 12px 14px;
+                border-radius: 10px;
+            }
+
+            #nav-toggle:checked~nav {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            /* Burger animation when open */
+            #nav-toggle:checked+label .line:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            #nav-toggle:checked+label .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            #nav-toggle:checked+label .line:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 28px;
+            color: #2638c3;
+            background-color: #ccc;
+            width: 80%;
+            border-radius: 6px;
+            margin: 35px auto 15px auto;
+        }
+
+        .accordion {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            background: #3498db;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 600;
+
+
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: #2980b9;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #ecf0f1;
+            padding: 0 20px;
+        }
+
+        .event {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mass {
+            color: #2980b9;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+
+        .meeting {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .meeting span,
+        .mass span {
+            color: #ffc107;
+            background-color: #211f1f;
+            width: 30px;
+            padding: 3px 6px;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 50px;
+        }
+
+        .arround {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+
+
+
+
+
+
+
+        @media (width < 550px) {
+            .br-mobile {
+                display: none;
+            }
+
+
+
+
+
+            .mass span,
+            .meeting span {
+                display: block;
+                width: 95%;
+                text-align: center;
+                margin: auto;
+                margin-bottom: 10px;
+            }
+
+            .mass,
+            .meeting {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(to right, #262525, #1A237E);
+color: #FFD700; /* اللون الأصفر للنص */">
+    <header class="site-header" role="banner">
+        <div class="container">
+            <a href="../../index.html" class="brand" aria-label="الصفحة الرئيسية">
+                <span class="mark"><i class="fa-solid fa-cross"></i></span>
+                <span style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">كنيستنا</span>
+            </a>
+            <!-- Toggle for mobile -->
+            <input type="checkbox" id="nav-toggle" aria-label="فتح وإغلاق القائمة" />
+            <label class="burger" for="nav-toggle" aria-hidden="true">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </label>
+
+            <nav aria-label="التنقل الرئيسي">
+                <ul style="text-align:center;">
+                    <li><a class="active" href="../../index.html" style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">الرئيسية</a></li>
+                    <li><a href="../../index.html#about" style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">عن الكنيسة</a></li>
+                    <li><a href="../../index.html#library" style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">مكتبة روحية</a></li>
+                    <li><a href="../../index.html#times" style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">المواعيد</a></li>
+                    <li><a href="../../index.html#contact" style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <h1>⏰ مواعيد القداسات والخدامات</h1>
+
+    <div class="accordion" style="margin-bottom: 40px;">
+
+        <!--  -->
+        <div class="accordion-item">
+            <div class="accordion-header">الجمعة</div>
+            <div class="accordion-content">
+                <div class="arround">
+                    <div class="event mass"><span>قداس الجمعة</span> من 6.30 الصبح
+                        لــ9 الصبح</div>
+                </div>
+                <div class="arround">
+                    <div class="event meeting"><span> اجتماع ثانوي</span> من 10 الصبح
+                        لــ11.30 الصبح</div>
+                </div>
+
+                <div class="arround">
+                    <div class="event mass"><span> اجتماع ابتدائي</span> من 9 الصبح
+                        لــ10.30 الصبح</div>
+                </div>
+                <div class="arround">
+                    <div class="event meeting"><span> كشافة ابتدائي </span> من 10.30 الضهر
+                        لــ12 الضهر</div>
+                </div>
+                <div class="arround">
+                    <div class="event mass"><span> اجتماع اعدادي</span> من 10 الصبح
+                        لـ11.30 الصبح</div>
+                </div>
+                <div class="arround">
+                    <div class="event meeting"><span> الكشافة اعدادي وثانوي</span> من 12 الضهر
+                        لــ1.30</div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!--  -->
+        <div class="accordion-item">
+            <div class="accordion-header">الاحد</div>
+            <div class="accordion-content">
+                <div class="arround">
+                    <div class="event mass"><span>قداس الاحد</span> من 6.30 الصبح
+                        لــ9 الصبح</div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <!--  -->
+        <div class="accordion-item">
+            <div class="accordion-header">الثلاثاء</div>
+            <div class="accordion-content">
+                <div class="arround">
+                    <div class="event mass"><span> اجتماع السيدات</span> من 8 الصبح
+                        لــ10 الصبح</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  -->
+        <div class="accordion-item">
+            <div class="accordion-header">الاربعاء</div>
+            <div class="accordion-content">
+                <div class="arround">
+                    <div class="event mass"><span> قداس الاربع</span> من 6.30 الصبح
+                        لــ9 الصبح</div>
+                </div>
+
+                <div class="arround">
+                    <div class="event meeting"><span> اجتماع الاربع</span> من 6 مساء
+                        لــ8 مساء</div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <div class="accordion-header">الخميس</div>
+            <div class="accordion-content">
+
+                <div class="arround">
+                    <div class="event mass"><span> اجتماع جامعي</span> من 4.30 مساء
+                        لــ6 مساء</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <center>
+        <a href="../../index.html#times" class="back">
+           للرجوع خطوة
+       </a>
+   </center>
+
+    <footer style="background-color: #211f1f; 
+     position: relative;
+     bottom: 0; 
+     margin-top: 20px;
+     width: 100%;
+     text-align: center;
+     margin-top: 45px;
+     border-top: 3px solid gold;
+     ">
+
+        <p style="font-size: 17px; 
+        margin: 5px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+        ">
+            @كل الحقوق محفوظة | كنيسة الشهيد اقلاديوس - باقور
+        </p>
+
+        <p style="font-size: 18px; 
+        margin: 2px 0 5px 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;">
+            تصميم وبرمجة : <span style="color: #4365ca; font-weight: 600;">توماس رفعت</span>
+        </p>
+
+        <a style="text-decoration: none; color:rgb(232, 211, 95); font-size: 20px;"
+            href="https://www.facebook.com/refaat.thomas?mibextid=ZbWKwL"><i class="fa-brands fa-facebook"></i></a>
+        <a style="text-decoration: none; color: rgb(240, 217, 87); font-size: 20px;"
+            href="https://www.instagram.com/thomasrefaat15?igsh=MTJvcGQ0bHp1M2p2MA=="><i
+                class="fa-brands fa-instagram"></i></a>
+    </footer>
+
+
+
+
+
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const active = header.classList.contains('active');
+                headers.forEach(h => {
+                    h.classList.remove('active');
+                    h.nextElementSibling.style.maxHeight = null;
+                });
+                if (!active) {
+                    header.classList.add('active');
+                    header.nextElementSibling.style.maxHeight = header.nextElementSibling.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

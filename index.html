@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> كنيسة الشهيد اقلاديوس بباقور</title>
+  <style>
+    :root {
+      /* ألوان الهيدر (أسود وذهبي كما طلبت) */
+      --bg: #0b0b0b;
+      /* خلفية الهيدر */
+      --accent: #d4af37;
+      /* الذهبي */
+      --text: #ffffff;
+      /* نص أبيض */
+      --text-dim: #d6d6d6;
+      /* نص باهت */
+      --hover: rgba(212, 175, 55, 0.15);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Kufi Arabic", "Cairo", Arial, sans-serif;
+      background: #f7f7f7;
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg);
+      color: var(--text);
+      border-bottom: 1px solid gold;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 12px;
+    }
+
+    /* Logo */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .brand .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #b9902e);
+      display: grid;
+      place-items: center;
+      color: var(--bg);
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, .35);
+    }
+
+    /* Nav */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 6px;
+    }
+
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: .2px;
+      transition: background .2s ease, color .2s ease, transform .08s ease;
+      outline: none;
+    }
+
+    nav a:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+
+    nav a:active {
+      transform: translateY(1px);
+    }
+
+    nav a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Current page */
+    .active {
+      color: var(--bg);
+      background: var(--accent);
+    }
+
+    .active:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* Mobile toggle (checkbox hack) */
+    #nav-toggle {
+      display: none;
+    }
+
+    .burger {
+      display: none;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .burger:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .burger .line {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      margin: 5px 0;
+      border-radius: 1px;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    /* Layout behavior */
+    @media (max-width: 820px) {
+      .container {
+        min-height: 60px;
+      }
+
+      .burger {
+        display: inline-block;
+      }
+
+      nav {
+        position: absolute;
+        inset-inline: 0;
+        top: 100%;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px;
+      }
+
+      nav a {
+        padding: 12px 14px;
+        border-radius: 10px;
+      }
+
+      #nav-toggle:checked~nav {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* Burger animation when open */
+      #nav-toggle:checked+label .line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      #nav-toggle:checked+label .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      #nav-toggle:checked+label .line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+
+
+
+    #typewriter {
+      margin-bottom: 30px;
+      font-weight: 600;
+      font-family: cursive;
+      font-size: 25px;
+    }
+
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="#" class="brand" aria-label="الصفحة الرئيسية">
+        <span class="mark"><i class="fa-solid fa-cross"></i></span>
+        <span
+          style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 18px;">كنيستنا</span>
+      </a>
+      <!-- Toggle for mobile -->
+      <input type="checkbox" id="nav-toggle" aria-label="فتح وإغلاق القائمة" />
+      <label class="burger" for="nav-toggle" aria-hidden="true">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </label>
+
+      <nav aria-label="التنقل الرئيسي">
+        <ul style="text-align:center;">
+          <li><a class="active" href="index.html"
+              style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">الرئيسية</a>
+          </li>
+          <li><a href="index.html#about"
+              style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">عن
+              الكنيسة</a></li>
+          <li><a href="index.html#library"
+              style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">مكتبة
+              روحية</a></li>
+          <li><a href="index.html#times"
+              style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">المواعيد</a>
+          </li>
+          <li><a href="index.html#contact"
+              style="font-size: 18px;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">تواصل
+              معنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+  <!-- Home -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 style="margin-bottom: 0;">مرحبا بك في كنيسة الشهيد إقلاديوس بباقور</h2>
+      <div style="margin-top: 0;" class="verse-box">
+        <h1 style="margin-top: 0;"> آية اليوم</h1>
+        <p id="verse"></p>
+      </div>
+      <a href="pages/times/time.html" class="btn"
+        style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">⏰ مواعيد
+        القداسات كاملة</a>
+    </div>
+  </section>
+
+
+
+
+  <!-- About -->
+  <h1 class="title fade-in" id="about">⛪ معلومات عن الكنيسة</h1>
+
+  <section  class="about fade-in">
+
+    <article>
+      <img src="images/place.jpg" class=" fade-in" style=" position: relative;
+    right: 10px;">
+
+      <div class="text">
+        <h3>تكريس الكنيسة</h3>
+        <p>تحتفل إيبارشية أسيوط والشعب الأرثوذكسي<br> سنويًا في 20 ديسمبر بذكرى تكريس الكنيسة</p>
+      </div>
+    </article>
+
+
+
+    <article>
+      <img class="img  fade-in" src="images/Qdous.jpg" style=" position: relative;
+    right: 10px;">
+      <div class="text text2  fade-in" style="margin-top: 10px;">
+        <h2>شفيع الكنيسة الشهيد اقلاديوس</h2>
+
+        <h3>من هو؟</h3>
+        <p>شهيد من أمراء الرومان، وُلد في أنطاكية، <br> وكان محبوباً في مدينته <strong><mark>اشتهر بالشجاعة
+              والوقار</strong>، </strong></mark><br>، بل عُرف
+          بـ"إقلاديوس الفارس"، <br>وحتى أن صورته عُلّقت على أبواب أنطاكية</p>
+
+        <h3>مواقف من حياته</h3>
+        <p>رفض عبادة الأصنام رغم تضييق دقلديانوس، <br> <mark><strong>ووافق على الاستشهاد </strong></mark>مع ابن عمه بقطر
+          بن رومانوس <br>في سبيل الإيمان
+          المسيحي</p>
+
+        <h3>استشهاده</h3>
+        <p style="margin-bottom: 50px;">بُعث إلى أنصنا في صعيد مصر <br>،<mark><strong>حيث تعرض للتعذيب والطعن
+              بالحربة</strong></mark> ونال إكليل الشهادة. <br>لاحقًا أُخذ جسده
+          الشريف من قِبل المؤمنين ودفن بأدب، <br>مما أدى إلى بناء الكنيسة باسمه في باقور</p>
+      </div>
+
+
+
+    </article>
+
+
+
+    <h3 style="width: 100%; margin: 0; font-size: 25px;">كهنة الكنيسة</h3>
+    <article>
+      <div class="card fade-in">
+        <img src="images/selwanes.jpg">
+        <h2><strong>القمص</strong> سلوانس فصيح</h2>
+        <p style="font-size: 19px; margin-bottom: 2px;"> كاهن الكنيسة حاليًا، <br> اصبح كاهن لكنيسة باقور من 2010 ,وتمت
+          ترقيته لقمص يوم 11 إبريل 2022 على يد
+          نيافة الأنبا يوأنس.</p>
+      </div>
+
+
+
+
+
+
+      <div class="card fade-in" style="margin-top: 50px;">
+        <img src="images/boktor.jpg">
+        <h2><strong>ابونا</strong> بقطر بطرس</h2>
+        <p style="font-size: 19px; margin-bottom: 2px;">
+          تاريخ رسامته 27 يونيو 1972, تنيح في ابريل 2016
+        </p>
+      </div>
+
+
+
+    </article>
+    <article>
+      <a style="width: 80%;" href="pages/about/about.html"> <button class="trans">
+          📸 صور الكنيسة
+        </button>
+      </a>
+
+    </article>
+
+
+
+  </section>
+
+
+
+
+
+  <!-- Library -->
+  <h1 class="title lib fade-in" id="library">📋 مكتبة روحية</h1>
+  <h1 style="color: #d4af37; background-color: #242426;" class="title"> آيات مريحة ليك</h1>
+  <section class="library fade-in">
+
+    <br>
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p id="verse">"تَعَالَوْا إِلَيَّ يَا جَمِيعَ الْمُتْعَبِينَ وَالثَّقِيلِي الأَحْمَالِ وَأَنَا أُرِيحُكُمْ.</p>
+      <span>متى 11: 28-29</span>
+    </div>
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p> "سَلاَمًا أَتْرُكُ لَكُمْ. سَلاَمِي أُعْطِيكُمْ. لَيْسَ كَمَا يُعْطِي الْعَالَمُ أُعْطِيكُمْ أَنَا. لاَ
+        تَضْطَرِبْ قُلُوبُكُمْ وَلاَ تَرْهَبْ."</p>
+      <span>يوحنا 14: 27</span>
+    </div class="fade-in">
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p>"الرَّبُّ رَاعِيَّ فَلاَ يُعْوِزُنِي شَيْءٌ. فِي مَرَاعٍ خُضْرٍ يُرْبِضُنِي. إِلَى مِيَاهِ الرَّاحَةِ
+        يُورِدُنِي." </p>
+      <span>مزمور 23: 1-2</span>
+    </div class="fade-in">
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p>"لاَ تَخَفْ لأَنِّي مَعَكَ. لاَ تَتَلَفَّتْ لأَنِّي إِلَهُكَ. قَدْ أَيَّدْتُكَ وَأَعَنْتُكَ وَعَضَدْتُكَ
+        بِيَمِينِ بِرِّي." </p>
+      <span>إشعياء 41: 10</span>
+    </div class="fade-in">
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p>"قَرِيبٌ هُوَ الرَّبُّ مِنَ الْمُنْكَسِرِي الْقُلُوبِ، وَيُخَلِّصُ الْمُنْسَحِقِي الرُّوحِ." </p>
+      <span>مزمور 34: 18</span>
+    </div>
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p>"لأَنِّي عَرَفْتُ الأَفْكَارَ الَّتِي أَنَا مُفَكِّرٌ بِهَا عَنْكُمْ، يَقُولُ الرَّبُّ، أَفْكَارَ سَلاَمٍ لاَ
+        شَرّ، لأُعْطِيَكُمْ آخِرَةً وَرَجَاءً." </p>
+      <span>إرميا 29: 11</span>
+    </div>
+
+
+
+    <div class="fade-in">
+      <h4>،،</h4>
+      <p>"وَأَمَّا مُنْتَظِرُو الرَّبِّ فَيُجَدِّدُونَ قُوَّةً. يَرْفَعُونَ أَجْنِحَةً كَالنُّسُورِ. يَرْكُضُونَ وَلاَ
+        يَتْعَبُونَ. يَمْشُونَ وَلاَ يُعْيُونَ." </p>
+      <span>إشعياء 40: 31</span>
+    </div>
+
+
+
+
+
+  </section>
+
+
+  <div class="enter fade-in">
+    <h2>أدخل آية</h2>
+    <input class="AI" type="text" id="verseInput" placeholder="اكتب الآية هنا...">
+    <button class="Ai" onclick="addVerse()">إضافة</button>
+
+    <div id="versesBox">
+      <p style="color: #777;">هنا ستظهر الآيات</p>
+    </div>
+
+
+
+
+    <h1 class="h1">عظات حلوة</h1>
+    <section class="youtube fade-in">
+      <div class="fade-in" style=" margin-bottom: 50px;">
+        <h1 class="h1" style="width: 100%; margin-bottom: 0; border-radius: 6px 6px 0 0;">اجمل تأملات البابا شنودة</h1>
+        <iframe src="https://www.youtube.com/embed/thr6WBW7eI4?si=CQjYk9CmlsbAx7MP" frameborder="0"
+          title="Youtube video player" allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="fade-in">
+        <h1 class="h1" style="width: 100%; margin-bottom: 0; border-radius: 6px 6px 0 0;"> الحدود في العلاقات </h1>
+        <iframe src="https://www.youtube.com/embed/DTvD5Z6eVcQ?si=CIzgdw2sOxWCvOrf" frameborder="0"
+          title="Youtube video player" allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+
+
+    <h1 class="h1" style="margin-bottom: 0; margin-top: 80px;">قصص قديسين</h1>
+    <section class="stories fade-in" style="margin-top: 0;">
+      <div class="fade-in">
+        <img src="images/maraim.jpg">
+        <p>أم النور، التي ولدت السيد المسيح بالجسد، نموذج الطهارة والتسليم الكامل لإرادة الله...</p>
+        <a href="pages/library/mariam.html">اقرأ القصة كاملة...</a>
+      </div>
+
+
+
+      <div class="fade-in" style="height: 415px;">
+        <img src="images/mina.jpg">
+        <p> مارمينا العجايبي، الجندي البسيط اللي بقى اسمه مرتبط بالمعجزات في كل مكان!</p>
+        <a href="pages/library/mina.html">اقرأ القصة كاملة...</a>
+      </div>
+    </section>
+
+  </div>
+
+  <article class=" fade-in" style="background-color: #242426;">
+    <a style="width: 80%;" href="pages/library/lib.html"> <button class="trans">
+      📋 باقي المكتبة
+      </button>
+    </a>
+
+  </article>
+
+
+
+
+
+  <!-- Times -->
+  <section class="times fade-in">
+    <h1 class="title" style="background-color: #ccc;" id="times">⏰ مواعيد القداسات والاجتماعات </h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>اليوم</th>
+          <th>القداس</th>
+          <th>الاجتماع</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>الجمعة</td>
+          <td>من 6.30
+            لــ9 الصبح</td>
+          <td>
+            الاجتماع
+            <br>
+            من 10.30 لــ12
+            <br>
+            الكشافة
+            <br>
+            من 12 لــ1.30
+          </td>
+        </tr>
+
+
+
+        <tr style="background-color: #989cb9;">
+          <td>الاحد</td>
+          <td>من 6.30
+            لــ 9 الصبح</td>
+          <td>
+            مفيش
+          </td>
+        </tr>
+
+
+
+
+        <tr>
+          <td>الثلاثاء</td>
+          <td>
+            مفيش
+          <td>
+            اجتماع سيدات
+            <br>
+            من 8 الصبح لــ10
+          </td>
+        </tr>
+
+
+
+        <tr style="background-color: #989cb9;">
+          <td>الاربعاء</td>
+          <td>من 6.30
+            لــ9 الصبح</td>
+          <td>
+            الاجتماع
+            <br>
+            من 6 مساء لــ8
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+    <a href="pages/times/time.html"> <button class="trans">
+      ⏰  كل المواعيد 
+      </button>
+    </a>
+  </section>
+
+
+
+
+
+  <!-- تواصل معناا -->
+  <h1 class="title fade-in" id="contact" style="color: #ccc;padding-bottom: 20px; background-color: #242426;">تواصل معنا </h1>
+  <section class="place" id="place">
+
+    <h3 style="margin-top: 0;
+       color: #2638c3;
+       font-size: 23px;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       ">
+      📍 موقع كنيسة الشهيد إقلاديوس - باقور
+    </h3>
+    <iframe
+    class="fade-in"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.210149328683!2d31.1740!3d27.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDExJzE1LjAiTiAzMcKwMTAnMjYuNSJF!5e0!3m2!1sen!2seg!4v1693134000000!5m2!1sen!2seg"
+      width="300px" height="300px" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+
+
+
+  <!-- footer -->
+  <footer style="background: #ccc; color: #ddd; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <div
+      style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
+
+      <!-- About -->
+      <div>
+        <h3 style="font-size: 23px;color: #2638c3; margin-bottom: 15px;">كنيسة الشهيد إقلاديوس</h3>
+        <p style="color: #121111; font-size: 20px;line-height: 1.6;">نخدمكم بمحبة ونصلي أن تكونوا دايمًا في سلام ونعمة.
+          أهلاً بكم في موقع الكنيسة الرسمي.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 style="font-size: 23px; color: #2638c3; margin-bottom: 15px;">روابط سريعة</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#"
+              style="font-size: 20px; color: #121111; text-decoration: none; display: block; margin-bottom: 8px;">🏠
+              الرئيسية</a></li>
+          <li><a href="#times"
+              style="font-size: 20px;color: #121111;; text-decoration: none; display: block; margin-bottom: 8px;"> 📅
+              مواعيد القداسات</a></li>
+          <li><a href="#"
+              style="font-size: 20px;color: #121111; text-decoration: none; display: block; margin-bottom: 8px;">⛪ عن
+              الكنيسة</a></li>
+          <li><a href="#place" style="font-size: 20px;color: #121111; text-decoration: none; display: block;">📍 الوصول
+              إلينا</a></li>
+        </ul>
+      </div>
+
+
+
+      <!-- Map -->
+      <div>
+        <h4 style="font-size: 23px; color: #2638c3; margin-bottom: 15px;">الموقع على الخريطة</h4>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.210149328683!2d31.1740!3d27.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDExJzE1LjAiTiAzMcKwMTAnMjYuNSJF!5e0!3m2!1sen!2seg!4v1693134000000!5m2!1sen!2seg"
+          width="100%" height="150" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      style="color: #121111;text-align: center; padding-top: 20px; border-top: 1px solid #333; margin-top: 30px; font-size: 17px;">
+      © 2025 جميع الحقوق محفوظة | كنيسة الشهيد إقلاديوس - باقور
+    </div>
+
+    <div class="hover" style="color: #121111;text-align: center; margin-top: 8px; font-size: 19px;">
+      تصميم وبرمجة : <span>توماس رفعت</span>
+    </div>
+
+    <a href="https://www.facebook.com/refaat.thomas?mibextid=ZbWKwL"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/thomasrefaat15?igsh=MTJvcGQ0bHp1M2p2MA=="><i
+        class="fa-brands fa-instagram"></i></a>
+  </footer>
+
+
+
+
+  <!-- the links -->
+  <div class="links">
+    <a href="https://api.whatsapp.com/send?text=زوروا%20موقعنا%20الرائع%20📸%20https://example.com" target="_blank"
+      class="whats">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <br>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank" class="face">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    
+  </div>
+
+
+
+
+  <!-- scroll -->
+  <a href="#">
+    <button class="scroll" id="btn">
+      <i class="fa-solid fa-up-long"></i>
+    </button>
+  </a>
+
+
+  <script src="script.js">
+
+  </script>
+</body>
+
+</html>
