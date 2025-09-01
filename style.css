@@ -697,6 +697,8 @@ footer div.hover  {
     border-radius: 6px;
     margin: auto;
     margin: 30px;
+    margin-top : 20px;
+    margin-bottom : 20px;
 }
 
 .youtube div h1 {
@@ -712,6 +714,7 @@ footer div.hover  {
     bottom: 35px;
     height: 200px;
     margin: 0;
+    margin-bottom : 20px;
 }
 
 
@@ -745,5 +748,6 @@ footer div.hover  {
     transform: translateY(0);
 
   }
+
 
 
